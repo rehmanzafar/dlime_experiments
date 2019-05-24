@@ -23,7 +23,7 @@ To conduct the experiments we have used the following three healthcare datasets 
 Breast cancer dataset comes along with scikit-learn package, therefore, there is no need to download this dataset. The rest of the datasets are already download and available inside the "data" folder in csv format.
 
 ### Algorithms
-The following classifiers are used in this study:
+The following classifiers and algorithms are used in this study:
 
 *  Random Forest
 *  Neural Networks
