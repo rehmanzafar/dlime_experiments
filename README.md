@@ -69,7 +69,7 @@ The results will be saved inside "results" directory in pdf and csv format.
 ### Citation
 Please consider citing our work if you use this code for your research.
 ```
-@InProceedings{rehman2019dlime,
+@InProceedings{zafar2019dlime,
   author    = {Muhammad Rehman Zafar and Naimul Mefraz Khan},
   title     = {DLIME: A Deterministic Local Interpretable Model-Agnostic Explanations Approach for Computer-Aided Diagnosis Systems},
   booktitle = {In proceeding of ACM SIGKDD Workshop on Explainable AI/ML (XAI) for Accountability, Fairness, and Transparency},
