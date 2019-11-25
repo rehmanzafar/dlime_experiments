@@ -16,7 +16,7 @@ These packages can be installed by executing the following command: ``pip3.6 ins
 ### Dataset
 To conduct the experiments we have used the following three healthcare datasets from UCI repository:
 
-*  [Breast Cancer Dataset](https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original))
+*  [Breast Cancer Dataset](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic))
 *  [Hepatitis Dataset](https://archive.ics.uci.edu/ml/datasets/hepatitis)
 *  [Indian Liver Patient Dataset](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset))
 
