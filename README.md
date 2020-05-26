@@ -7,7 +7,7 @@ The following python environment and packages are used to conduct the experiment
 *  python==3.6
 *  Boruta==0.1.5
 *  numpy==1.16.1
-*  pandas=0.24.2
+*  pandas==0.24.2
 *  scikit-learn==0.20.2
 *  scipy==1.2.1
 
