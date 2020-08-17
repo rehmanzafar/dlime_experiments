@@ -33,6 +33,7 @@ The following classifiers and algorithms are used in this study:
 
 In the experiments, 80% data is used for training and the remaining 20% data is used for testing. Further, the Random Forest, Neural Networks and KNN classifiers are trained with the following parameters:
 
+```
 RandomForestClassifier(n_estimators=10, random_state=0, max_depth=5, max_features=5)
 
 MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
@@ -40,7 +41,7 @@ MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_stat
 NearestNeighbors(n_neighbors=1, algorithm='ball_tree')
 
 AgglomerativeClustering(n_clusters=2, affinity='euclidean', compute_full_tree='auto', connectivity=None, linkage='ward', memory=None)
-
+```
 
 ### Execute Code
 Run the following files to reproduce the results. The results of LIME are not deterministic and it may produce different results.
