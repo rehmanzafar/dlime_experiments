@@ -1,0 +1,106 @@
+Synthetic 1 - HC
+Cosine Similarity DLIME Overall = 0.7274132858881427
+Cosine Similarity LIME Overall = 0.694161947156407
+
+Synthetic 1 - 20 NN
+Cosine Similarity DLIME Overall = 0.33615919338330513
+Cosine Similarity LIME Overall = 0.6948180717157342
+
+Synthetic 1 - 50 NN
+Cosine Similarity DLIME Overall = 0.33615919338330513
+Cosine Similarity LIME Overall = 0.6948180717157342
+
+
+Fidelity DLIME Overall = 0.05586199998961225
+Fidelity LIME Overall = 0.09707698160619976
+
+#############################################################
+Synthetic 2 - HC
+Cosine Similarity DLIME Overall = 0.6155544341491159
+Cosine Similarity LIME Overall = 0.6018533647687125
+
+Synthetic 2 - 20 NN
+Cosine Similarity DLIME Overall = 0.05600526585214672
+Cosine Similarity LIME Overall = 0.6018533647687125
+
+Synthetic 2 - 50 NN
+Cosine Similarity DLIME Overall = 0.05600526585214672
+Cosine Similarity LIME Overall = 0.6018533647687125
+
+Fidelity DLIME Overall = 0.09810137236530413
+Fidelity LIME Overall = 0.09555775219908474
+
+#############################################################
+Synthetic 3 - HC
+Cosine Similarity DLIME Overall = 0.7737317784869572
+Cosine Similarity LIME Overall = 0.9977640928002458
+
+Synthetic 3 - 20 NN
+Cosine Similarity DLIME Overall = 0.5693661335762321
+Cosine Similarity LIME Overall = 0.9977640928002458
+
+Synthetic 3 - 50 NN
+Cosine Similarity DLIME Overall = 0.5693661335762323
+Cosine Similarity LIME Overall = 0.9977640928002458
+
+Fidelity DLIME Overall = 0.09832583107087878
+Fidelity LIME Overall = 0.08729974766583927
+
+#############################################################
+Synthetic 4 - HC
+Cosine Similarity DLIME Overall = 0.8894527058720233
+Cosine Similarity LIME Overall = 0.842158967571759
+
+Synthetic 4 - 20 NN
+Cosine Similarity DLIME Overall = 0.30080860675977705
+Cosine Similarity LIME Overall = 0.842158967571759
+
+Synthetic 4 - 50 NN
+Cosine Similarity DLIME Overall = 0.30080860675977705
+Cosine Similarity LIME Overall = 0.842158967571759
+
+Fidelity DLIME Overall = 0.09726283576947985
+Fidelity LIME Overall = 0.09446757702958564
+
+#############################################################
+Synthetic 5 - HC
+Cosine Similarity DLIME Overall = 0.3658472529567441
+Cosine Similarity LIME Overall = 0.3659383020790438
+
+Synthetic 5 - 20 NN
+Cosine Similarity DLIME Overall = 0.3900040485522615
+Cosine Similarity LIME Overall = 0.365827351092028
+
+Synthetic 5 - 50 NN
+Cosine Similarity DLIME Overall = 0.38108185395895267
+Cosine Similarity LIME Overall = 0.3657635428359417
+
+Fidelity DLIME Overall = 0.04332990042746372
+Fidelity LIME Overall = 0.04228066030491119
+
+#############################################################
+Synthetic 6 - HC
+Cosine Similarity DLIME Overall = 0.2937321892061092
+Cosine Similarity LIME Overall = 0.2941088354651239
+
+Synthetic 6 - 20 NN
+Cosine Similarity DLIME Overall = 0.2478916543909715
+Cosine Similarity LIME Overall = 0.2941088354651239
+
+Synthetic 6 - 50 NN
+Cosine Similarity DLIME Overall = 0.297220577168204
+Cosine Similarity LIME Overall = 0.2941088354651239
+
+Fidelity DLIME Overall = 0.03850009766080347
+Fidelity LIME Overall = 0.03494865392641129
+
+#############################################################
+Thoyrid Dataset - HC
+Cosine Similarity DLIME Overall = 0.17568130173091062
+Cosine Similarity LIME Overall = 0.17843938470473944
+
+Fidelity DLIME Overall = 0.0071892662286984115
+Fidelity LIME Overall = 0.00001636865 (1.6368654297996815e-05)
+#############################################################
+
+
