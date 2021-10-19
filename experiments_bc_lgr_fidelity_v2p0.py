@@ -124,7 +124,10 @@ for x in range(0, test.shape[0]): #test.shape[0]
                                                                  model_regressor="tree",
                                                                  clustered_data=subset,
                                                                  regressor='tree',
-                                                                 explainer='dlime', labels=(0, 1),
+                                                                 explainer='dlime',
+                                                                 # labels=(0, 1),
+                                                                 # labels=(0,1,2),
+                                                                 ##labels=(0,1,2,3,4,4,5,6,7,8,9),
                                                                  blmodel=lgr,
                                                                  fidelity=True)
 

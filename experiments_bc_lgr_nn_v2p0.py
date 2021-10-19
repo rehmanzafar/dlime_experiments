@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn import preprocessing
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression, LogisticRegression
@@ -10,7 +11,7 @@ from sklearn.neighbors import NearestNeighbors
 from explainer_tabular import LimeTabularExplainer
 from load_dataset import LoadDataset
 
-test = LoadDataset(which='synth3')
+test = LoadDataset(which='synth2')
 X = test.data.data
 feature_names = test.data.feature_names
 #target_names = test.data.target_names
@@ -22,16 +23,21 @@ target_names = np.array(['Yes', 'No'])
 # np.save("data/synthetic/y_test_s5.npy", labels_test)
 
 # fix it
-train = np.load("data/synthetic/X_train_s3.npy")
-test = np.load("data/synthetic/X_test_s3.npy")
-labels_train = np.load("data/synthetic/y_train_s3.npy")
-labels_test = np.load("data/synthetic/y_test_s3.npy")
+# train = np.load("data/X_train.npy")
+# test = np.load("data/X_test.npy")
+# labels_train = np.load("data/y_train.npy")
+# labels_test = np.load("data/y_test.npy")
+
+train = np.load("data/synthetic/X_train_s2.npy")
+test = np.load("data/synthetic/X_test_s2.npy")
+labels_train = np.load("data/synthetic/y_train_s2.npy")
+labels_test = np.load("data/synthetic/y_test_s2.npy")
 
 #rf = RandomForestClassifier(n_estimators=10, random_state=0, max_depth=5, max_features=5)
 #rf.fit(train, labels_train)
 #mean_accuracy = rf.score(test, labels_test)
 
-lgr = LogisticRegression(random_state=0).fit(train, labels_train)
+lgr = LogisticRegression(max_iter=1000, random_state=0).fit(train, labels_train)
 mean_accuracy = lgr.score(test, labels_test)
 e_true = lgr.coef_
 
@@ -47,7 +53,7 @@ explainer = LimeTabularExplainer(train,
 # names = list(feature_names)+["membership"]
 # clustered_data = np.column_stack([X, clustering.labels_])
 
-nbrs = NearestNeighbors(n_neighbors=20, algorithm='ball_tree').fit(train)
+nbrs = NearestNeighbors(n_neighbors=50, algorithm='ball_tree').fit(train)
 distances, indices = nbrs.kneighbors(test)
 #clabel = clustering.labels_
 
@@ -68,6 +74,7 @@ def jaccard_distance(usecase):
 
 list_avg_cos_sim_dlime = []
 list_avg_cos_sim_lime = []
+lst_fid_dlime = []
 for x in range(0, test.shape[0]):
     use_case_one_features = []
     use_case_two_features = []
@@ -78,24 +85,33 @@ for x in range(0, test.shape[0]):
     lime_list_coef = []
     #lime_list_coef_1 = []
 
+    dlime_fid_list =[]
+
     subset = train[indices[x], :] # for NN
 
     # p_label = clabel[indices[x]] # for HC
     # N = clustered_data[clustered_data[:, 9] == p_label]
     # subset = np.delete(N, 9, axis=1)
     for i in range(0, 10):
-        exp_dlime = explainer.explain_instance_hclust(test[x],
+        exp_dlime, fid_dlime = explainer.explain_instance_hclust(test[x],
                                              lgr.predict_proba,
                                              num_features=test.shape[1],
                                              model_regressor=LinearRegression(),
                                              clustered_data = subset,
                                              regressor = 'linear',
-                                             explainer='dlime', labels=(0,1))
+                                             explainer='dlime',
+                                             labels=(0, 1),
+                                             # labels=(0,1,2),
+                                             # labels=(0,1,2,3,4,4,5,6,7,8,9),
+                                             blmodel = lgr,
+                                             fidelity = True
+                                             )
 
         #fig_dlime, r_features = exp_dlime.as_pyplot_to_figure(type='h', name = i+.2, label='0')
         #fig_dlime.show()
         #use_case_two_features.append(r_features)
         dlime_list_coef.append(exp_dlime.easy_model_coef[0])
+        dlime_fid_list.append(fid_dlime)
         #dlime_list_coef_0.append(exp_dlime.easy_model_coef[0])
         #dlime_list_coef_1.append(exp_dlime.easy_model_coef[1])
 
@@ -147,6 +163,8 @@ for x in range(0, test.shape[0]):
     #cos_similarity_0 = cosine_similarity(e_true, ext_0)
     #cos_similarity_1 = cosine_similarity(e_true, ext_1)
 
+    lst_fid_dlime.append(sum(dlime_fid_list) / len(dlime_fid_list))
+
     cos_similarity_dlime = abs(cosine_similarity(e_true, dlime_list_coef))
     #cos_similarity_lime = abs(cosine_similarity(e_true, lime_list_coef))
 
@@ -157,10 +175,14 @@ for x in range(0, test.shape[0]):
     #list_avg_cos_sim_lime.append(avg_cos_similarity_lime)
 
     print(f"Actuale Label = {labels_test[x]}")
-    print(f"Cosine Similarity DLIME after 10 iterations = {avg_cos_similarity_dlime}")
+    print(f"Cosine Similarity DLIME-NN after 10 iterations = {avg_cos_similarity_dlime}")
+    print(f"Fidelity DLIME-NN after 10 iterations = {sum(dlime_fid_list)/len(dlime_fid_list)}")
     #print(f"Cosine Similarity LIME after 10 iterations = {avg_cos_similarity_lime}")
 o_avg_cos_similarity_dlime = np.mean(np.array(list_avg_cos_sim_dlime))
 #o_avg_cos_similarity_lime = np.mean(np.array(list_avg_cos_sim_lime))
-print(f"Cosine Similarity DLIME Overall = {o_avg_cos_similarity_dlime}")
+print(f"Cosine Similarity DLIME-NN Overall = {o_avg_cos_similarity_dlime}")
+avg_dlime_fid = sum(lst_fid_dlime)/len(lst_fid_dlime)
+print(f"Fidelity DLIME-NN Overall = {avg_dlime_fid}")
+
 #print(f"Cosine Similarity LIME Overall = {o_avg_cos_similarity_lime}")
 print("Execution done")

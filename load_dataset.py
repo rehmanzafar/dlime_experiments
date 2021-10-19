@@ -17,7 +17,7 @@ class LoadDataset:
             feature_names = feature_names[:-1]
             target_names = np.array(['yes', 'no'])
 
-            data = np.array(df.iloc[:, 0:19])
+            data = preprocessing.scale(np.array(df.iloc[:, 0:19]))
             target = np.array(df['Class'])
 
             self.data = Bunch(data=data, target=target,
@@ -26,18 +26,19 @@ class LoadDataset:
         elif which == 'ildp':
             df = pd.read_csv("data/ildp.csv")
             df = df.fillna(method='ffill')
+            df = df.drop(columns=['id'])
             df['class'] = np.where(df['class'] == 'Yes', 0, 1)
             feature_names = list(df.columns)
             feature_names = feature_names[:-1]
             target_names = np.array(['yes', 'no'])
 
-            #data = preprocessing.scale(np.array(df.iloc[:, 0:9]))
-            data = np.array(df.iloc[:, 0:9])
+            data = preprocessing.scale(np.array(df.iloc[:, 0:9]))
+            #data = np.array(df.iloc[:, 0:9])
             target = np.array(df['class'])
 
             self.data = Bunch(data=data, target=target,
                   target_names=target_names,
-                  feature_names=feature_names, dataframe = df.drop(columns=['class', 'id']))
+                  feature_names=feature_names, dataframe = df.drop(columns=['class']))
         elif which == 'thyroid':
             df = pd.read_csv("data/thyroid-complete.csv")
             #df = pd.read_csv("data/thyroid/thyroid-train.csv")
@@ -50,6 +51,61 @@ class LoadDataset:
 
             data = np.array(df.iloc[:, 0:21])
             target = np.array(df['Class'])
+
+            self.data = Bunch(data=data, target=target,
+                              target_names=target_names,
+                              feature_names=feature_names)
+        elif which == 'mc1':
+            df = pd.read_csv("data/mc/dataset_30_page-blocks.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-train.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-test.csv")
+            #df = df.fillna(method='ffill')
+            #df['Class'] = np.where(df['Class'] == 'Yes', 0, 1)
+            feature_names = list(df.columns)
+            feature_names = feature_names[:-1]
+            target_names = np.array(['Onr', 'Two', 'Three', 'Four', 'Five']) # 1, 2, 3 repectively
+
+            d = np.array(df.iloc[:, 0:10])
+            data = preprocessing.scale(d)
+            target = np.array(df['class'])
+
+            self.data = Bunch(data=data, target=target,
+                              target_names=target_names,
+                              feature_names=feature_names)
+
+        elif which == 'mc2':
+            df = pd.read_csv("data/mc/cardiography.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-train.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-test.csv")
+            #df = df.fillna(method='ffill')
+            #df['Class'] = np.where(df['Class'] == 'Yes', 0, 1)
+            feature_names = list(df.columns)
+            feature_names = feature_names[:-1]
+            target_names = np.array(['One', 'Two', 'Three', 'Four', 'Five', 'Six',
+                                     'Seven', 'Eight', 'Nine', 'Ten']) # 1, 2, 3 repectively
+
+            d = np.array(df.iloc[:, 0:35])
+            data = preprocessing.scale(d)
+            target = np.array(df['Class'])
+
+            self.data = Bunch(data=data, target=target,
+                              target_names=target_names,
+                              feature_names=feature_names)
+
+        elif which == 'mc3':
+            df = pd.read_csv("data/mc/dataset_32_pendigits.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-train.csv")
+            #df = pd.read_csv("data/thyroid/thyroid-test.csv")
+            #df = df.fillna(method='ffill')
+            #df['Class'] = np.where(df['Class'] == 'Yes', 0, 1)
+            feature_names = list(df.columns)
+            feature_names = feature_names[:-1]
+            target_names = np.array(['Onr', 'Two', 'Three', 'Four', 'Five', 'Six',
+                                     'Seven', 'Eight', 'Nine', 'Ten']) # 1, 2, 3 repectively
+
+            d = np.array(df.iloc[:, 0:16])
+            data = preprocessing.scale(d)
+            target = np.array(df['class'])
 
             self.data = Bunch(data=data, target=target,
                               target_names=target_names,

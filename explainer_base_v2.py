@@ -115,7 +115,7 @@ class LimeBase(object):
             model_regressor = Ridge(alpha=1, fit_intercept=True,
                                     random_state=self.random_state)
         elif model_regressor is 'tree':
-            model_regressor = RandomForestRegressor(n_estimators=10, random_state=0, max_depth=None, max_features=None) #, max_depth=10, max_features=10
+            model_regressor = RandomForestRegressor(n_estimators= 10, random_state=0) #estimators = 10, max_depth=10, max_features=10
         else:
             model_regressor = LinearRegression()
         easy_model = model_regressor
