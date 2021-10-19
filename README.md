@@ -69,6 +69,7 @@ The results will be saved inside "results" directory in pdf and csv format.
 
 ### Citation
 Please consider citing our work if you use this code for your research.
+# Initial Results
 ```
 @InProceedings{zafar2019dlime,
   author    = {Muhammad Rehman Zafar and Naimul Mefraz Khan},
@@ -77,5 +78,18 @@ Please consider citing our work if you use this code for your research.
   year      = {2019},
   publisher = {ACM},
   address   = {Anchorage, Alaska}
+}
+```
+# Extended Version
+```
+@article{zafar2021deterministic,
+  title={Deterministic Local Interpretable Model-Agnostic Explanations for Stable Explainability},
+  author={Zafar, Muhammad Rehman and Khan, Naimul},
+  journal={Machine Learning and Knowledge Extraction},
+  volume={3},
+  number={3},
+  pages={525--541},
+  year={2021},
+  publisher={Multidisciplinary Digital Publishing Institute}
 }
 ```
